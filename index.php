@@ -12,7 +12,7 @@
 	<!-- meta tags and title -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>DTC 477 Major Project</title>
+	<title>Music Manager</title>
 
 	<!-- external and internal CSS -->
 	<link rel="stylesheet" href="styles.css" media="all">

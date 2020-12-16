@@ -80,7 +80,7 @@ if ($search != "") {
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="index.php">Music Manager</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -89,26 +89,29 @@ if ($search != "") {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+            <a class="btn btn-inverse btn-link" href="index.php">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="add-song.php">Add Song</a>
+            <a class="btn btn-inverse btn-link" href="add-song.php">Add Song</a>
           </li>
           <form method="POST">
-            <button class="nav-link" id="deleteSelected" name="deleteSelected" type="submit">Delete Checked</button>
+            <button class="btn btn-inverse btn-link" id="deleteSelected" name="deleteSelected" type="submit">Delete Checked</button>
         </ul>
         <div class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" name="searchText" type="searchText" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
         </div>
       </div>
     </nav>
 
 
     <div class="container">
-      <?= outputSongResults($result, true); // call the function that returns HTML for a table
+      <div class="w-100">
+        <?= outputSongResults($result, true); // call the function that returns HTML for a table
         ?>
         </form>
+        </table>
+      </div>
     </div>
 
   </body>

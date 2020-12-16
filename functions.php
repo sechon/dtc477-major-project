@@ -8,22 +8,25 @@ function outputSongResults($allSongs, $includeCheckbox = false) {
 	
 	$counter = 1;
 	$output = "";
-	$output .= "<table cellpadding='10'>\n";
+	$output .= "<table class=\"table table-dark\">\n";
   
-  $output .= "\t<tr style='background-color: #ddd;'>\n";
-  $output .= "\t\t<td>PLAY</td>\n";
-  $output .= "\t\t<td>NAME</td>\n";
-  $output .= "\t\t<td>ARTIST</td>\n";
-  $output .= "\t\t<td>ALBUM</td>\n";
-  $output .= "\t\t<td>RATING</td>\n";
-  $output .= "\t\t<td>EDIT</td>\n";
-  $output .= "\t\t<td>DELETE</td>\n";
+  $output .= "\t<thead>\n";
+  $output .= "\t<tr>\n";
+  $output .= "\t\t<th>PLAY</th>\n";
+  $output .= "\t\t<th>NAME</th>\n";
+  $output .= "\t\t<th>ARTIST</th>\n";
+  $output .= "\t\t<th>ALBUM</th>\n";
+  $output .= "\t\t<th>RATING</th>\n";
+  $output .= "\t\t<th>EDIT</th>\n";
+  $output .= "\t\t<th>DELETE</th>\n";
   $output .= "\t</tr>\n";
+  $output .= "\t</thead>\n";
 	
 	// loop through $allSongs with each $row available as $appt
   if (is_array($allSongs) || is_object($allSongs)){
     foreach ($allSongs as $song) {
-      $output .= "\t<tr style='background-color: #ddd;'>\n";
+      $output .= "\t<tbody>\n";
+      $output .= "\t<tr>\n";
 
       $output .= "\t\t<td><a target=\"_blank\" href=\"" . $song["song_video"] . "\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-play\" viewBox=\"0 0 16 16\">
       <path fill-rule=\"evenodd\" d=\"M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z\"/>
@@ -47,6 +50,7 @@ function outputSongResults($allSongs, $includeCheckbox = false) {
       $counter++;
     }
   }
+  $output .= "</tbody>";
 	$output .= "</table>";
 	
 	return $output;

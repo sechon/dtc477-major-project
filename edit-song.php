@@ -6,6 +6,10 @@
 require 'database.php';
 require 'functions.php';
 
+//https://www.studentstutorial.com/php/php-mysql-data-update.php
+$result = mysqli_query($db,"SELECT * FROM $databaseTable WHERE songid='" . $_GET['songid'] . "'");
+$row = mysqli_fetch_array($result);
+
 // read submitted data from the $_POST array
 $songID = mysqli_real_escape_string($db, $_POST["addSongName"]);
 $songName = mysqli_real_escape_string($db, $_POST["addSongName"]);
@@ -17,6 +21,7 @@ $songVideo = mysqli_real_escape_string($db, $_POST["addVideo"]);
 
 if (isset($_GET["songid"])){
   $songID = $_GET["songid"];
+    
   if ( ($songName != "") && ($songArtist != "") && ($songAlbum != "") && ($songRating != "") && ($songVideo != "") ) {
 
     // update submitted information into the database
@@ -63,46 +68,47 @@ if (isset($_GET["songid"])){
     </script>
 </head>
 <body>
+  <div class="d-flex justify-content-center">
+    <div class="jumbotron w-50">
+      <h1>
+        Edit Song
+      </h1>
+      <form method="POST">
+        <div class="form-group">
+          <label for="addSongName">Song Name: </label>
+          <input class="form-control" name="addSongName" id="addSongName" value="<? echo $row['song_name']; ?>" required></input>
+        </div>
 
-<form method="POST">
-	<table>
-		<tr>
-			<td>Song Name:</td>
-			<td><input id="addSongName" name="addSongName" type="text" value="<? $songName ?>" required></td>
-		</tr>
-		<tr>
-			<td>Artist Name:</td>
-			<td><input id="addArtistName" name="addArtistName" type="text" required></td>
-		</tr>
-		<tr>
-			<td>Album Name:</td>
-			<td><input id="addAlbumName" name="addAlbumName" type="text" required></td>
-		</tr>
-		<tr>
-			<td>Rating:</td>
-			<td><select name="addRating" id="addRating" required>
+        <div class="form-group">
+          <label for="addArtistName">Artist Name:</label>
+          <input class="form-control" name="addArtistName" id="addArtistName" value="<? echo $row['song_artist']; ?>" required></input>
+        </div>
+
+        <div class="form-group">
+          <label for="addAlbumName">Album Name:</label>
+          <input class="form-control" name="addAlbumName" id="addAlbumName" value="<? echo $row['song_album']; ?>" required></input>
+        </div>
+
+        <div class="form-group">
+          <label for="addRating">Rating: </label>
+          <select class="form-control" name="addRating" id="addRating" value="<? echo $row['song_rating']; ?>" required>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-          </select></td>
-		</tr>
-    <tr>
-			<td>Video URL:</td>
-			<td><input id="addVideo" name="addVideo" type="url" required></td>
-		</tr>
-		<tr>
-			<td colspan="2"><button type="submit">Update Song</button></td>
-		</tr>
-	</table>
-</form>
+          </select>
+        </div>
 
-<ul>
-	<li><a href="add-song.php">Add Song</a></li>
-	<li><a href="index.php">Read Music Manager</a></li>
-	<li><a href="search.php">Search Songs</a></li>
-</ul>
+        <div class="form-group">
+          <label for="addVideo">Video URL: </label>
+          <input type="url" class="form-control" name="addVideo" id="addVideo" value="<? echo $row['song_video']; ?>" required>
+        </div>
 
+        <button class="btn btn-primary" type="submit">Update Song</button>
+      </form>
+      <a href="index.php"><button class="btn btn-primary">Back to Music Manager</button></a>
+    </div>
+  </div>
 </body>
 </html>

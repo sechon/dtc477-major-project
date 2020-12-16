@@ -1,1 +1,12 @@
 [16-Dec-2020 07:55:47 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/spencere/public_html/repositories/dtc477-major-project/index.php on line 22
+[16-Dec-2020 11:14:57 UTC] PHP Warning:  Use of undefined constant hello - assumed 'hello' (this will throw an Error in a future version of PHP) in /home/spencere/public_html/repositories/dtc477-major-project/edit-song.php on line 80
+[16-Dec-2020 11:20:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_query() in /home/spencere/public_html/repositories/dtc477-major-project/edit-song.php:26
+Stack trace:
+#0 {main}
+  thrown in /home/spencere/public_html/repositories/dtc477-major-project/edit-song.php on line 26
+[16-Dec-2020 11:20:46 UTC] PHP Parse error:  syntax error, unexpected '?>' in /home/spencere/public_html/repositories/dtc477-major-project/edit-song.php on line 81
+[16-Dec-2020 11:25:17 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, string given in /home/spencere/public_html/repositories/dtc477-major-project/edit-song.php on line 81
+[16-Dec-2020 11:25:17 UTC] PHP Warning:  Use of undefined constant song_name - assumed 'song_name' (this will throw an Error in a future version of PHP) in /home/spencere/public_html/repositories/dtc477-major-project/edit-song.php on line 81
+[16-Dec-2020 11:25:53 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, string given in /home/spencere/public_html/repositories/dtc477-major-project/edit-song.php on line 81
+[16-Dec-2020 11:26:02 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, string given in /home/spencere/public_html/repositories/dtc477-major-project/edit-song.php on line 81
+[16-Dec-2020 11:26:04 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, string given in /home/spencere/public_html/repositories/dtc477-major-project/edit-song.php on line 81

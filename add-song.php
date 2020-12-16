@@ -54,46 +54,47 @@ if ( ($songName != "") && ($songArtist != "") && ($songAlbum != "") && ($songRat
     </script>
 </head>
 <body>
+  <div class="d-flex justify-content-center">
+    <div class="jumbotron w-50">
+      <h1>
+        Add Song
+      </h1>
+      <form method="POST">
+        <div class="form-group">
+          <label for="addSongName">Song Name: </label>
+          <input class="form-control" name="addSongName" id="addSongName" placeholder="" required></input>
+        </div>
 
-<form method="POST">
-	<table>
-		<tr>
-			<td>Song Name:</td>
-			<td><input id="addSongName" name="addSongName" type="text" required></td>
-		</tr>
-		<tr>
-			<td>Artist Name:</td>
-			<td><input id="addArtistName" name="addArtistName" type="text" required></td>
-		</tr>
-		<tr>
-			<td>Album Name:</td>
-			<td><input id="addAlbumName" name="addAlbumName" type="text" required></td>
-		</tr>
-		<tr>
-			<td>Rating:</td>
-			<td><select name="addRating" id="addRating">
+        <div class="form-group">
+          <label for="addArtistName">Artist Name:</label>
+          <input class="form-control" name="addArtistName" id="addArtistName" placeholder="" required></input>
+        </div>
+
+        <div class="form-group">
+          <label for="addAlbumName">Album Name:</label>
+          <input class="form-control" name="addAlbumName" id="addAlbumName" placeholder="" required></input>
+        </div>
+
+        <div class="form-group">
+          <label for="addRating">Rating: </label>
+          <select class="form-control" name="addRating" id="addRating" required>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-          </select></td>
-		</tr>
-    <tr>
-			<td>Video URL:</td>
-			<td><input id="addVideo" name="addVideo" type="url"></td>
-		</tr>
-		<tr>
-			<td colspan="2"><button type="submit">Add Song</button></td>
-		</tr>
-	</table>
-</form>
+          </select>
+        </div>
 
-<ul>
-	<li><a href="add-song.php">Add Song</a></li>
-	<li><a href="index.php">Read Music Manager</a></li>
-	<li><a href="search.php">Search Songs</a></li>
-</ul>
+        <div class="form-group">
+          <label for="addVideo">Video URL: </label>
+          <input type="url" class="form-control" name="addVideo" id="addVideo" placeholder="" required>
+        </div>
 
+        <button class="btn btn-primary" type="submit">Add Song</button>
+      </form>
+      <a href="index.php"><button class="btn btn-primary">Back to Music Manager</button></a>
+    </div>
+  </div>
 </body>
 </html>

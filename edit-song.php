@@ -7,6 +7,7 @@ require 'database.php';
 require 'functions.php';
 
 // read submitted data from the $_POST array
+$songID = mysqli_real_escape_string($db, $_POST["addSongName"]);
 $songName = mysqli_real_escape_string($db, $_POST["addSongName"]);
 $songArtist = mysqli_real_escape_string($db, $_POST["addArtistName"]);
 $songAlbum = mysqli_real_escape_string($db, $_POST["addAlbumName"]);
@@ -14,18 +15,26 @@ $songRating = mysqli_real_escape_string($db, $_POST["addRating"]);
 $songVideo = mysqli_real_escape_string($db, $_POST["addVideo"]);
 
 
-if ( ($songName != "") && ($songArtist != "") && ($songAlbum != "") && ($songRating != "") && ($songVideo != "") ) {
+if (isset($_GET["songid"])){
+  $songID = $_GET["songid"];
+  if ( ($songName != "") && ($songArtist != "") && ($songAlbum != "") && ($songRating != "") && ($songVideo != "") ) {
 
-	// insert submitted information into the database
-	// ideally we would analyze the info first to confirm it is accurate, but let's live dangerously
-	// but we did use mysqli_real_escape_string() above for security reasons
-	$sql = "INSERT INTO $databaseTable (song_name, song_artist, song_album, song_rating, song_video)
-					VALUES ( '$songName', '$songArtist', '$songAlbum', '$songRating', '$songVideo' )";
-	
-	$result = $db->query($sql); // process the SQL logic above, and get a result back
-	
-	if (!$result) die("Insert Error: " . $sql . "<br>" . $db->error);
-	
+    // update submitted information into the database
+    // ideally we would analyze the info first to confirm it is accurate, but let's live dangerously
+    // but we did use mysqli_real_escape_string() above for security reasons
+    $sql = "UPDATE $databaseTable
+            SET song_name = '$songName',
+                song_artist = '$songArtist',
+                song_album = '$songAlbum',
+                song_rating = '$songRating',
+                song_video = '$songVideo'
+            WHERE songid = $songID";
+
+    $result = $db->query($sql); // process the SQL logic above, and get a result back
+
+    if (!$result) die("Insert Error: " . $sql . "<br>" . $db->error);
+
+  }
 }
 
 // onward to the HTML!
@@ -59,19 +68,19 @@ if ( ($songName != "") && ($songArtist != "") && ($songAlbum != "") && ($songRat
 	<table>
 		<tr>
 			<td>Song Name:</td>
-			<td><input id="addSongName" name="addSongName" type="text"></td>
+			<td><input id="addSongName" name="addSongName" type="text" value="<? $songName ?>" required></td>
 		</tr>
 		<tr>
 			<td>Artist Name:</td>
-			<td><input id="addArtistName" name="addArtistName" type="text"></td>
+			<td><input id="addArtistName" name="addArtistName" type="text" required></td>
 		</tr>
 		<tr>
 			<td>Album Name:</td>
-			<td><input id="addAlbumName" name="addAlbumName" type="text"></td>
+			<td><input id="addAlbumName" name="addAlbumName" type="text" required></td>
 		</tr>
 		<tr>
 			<td>Rating:</td>
-			<td><select name="addRating" id="addRating">
+			<td><select name="addRating" id="addRating" required>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -81,10 +90,10 @@ if ( ($songName != "") && ($songArtist != "") && ($songAlbum != "") && ($songRat
 		</tr>
     <tr>
 			<td>Video URL:</td>
-			<td><input id="addVideo" name="addVideo" type="url"></td>
+			<td><input id="addVideo" name="addVideo" type="url" required></td>
 		</tr>
 		<tr>
-			<td colspan="2"><button type="submit">Add Song</button></td>
+			<td colspan="2"><button type="submit">Update Song</button></td>
 		</tr>
 	</table>
 </form>

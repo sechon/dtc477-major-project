@@ -8,7 +8,7 @@ function outputSongResults($allSongs, $includeCheckbox = false) {
 	
 	$counter = 1;
 	$output = "";
-	$output .= "<table class=\"table table-dark\">\n";
+	$output .= "<table class=\"table table-light table-hover table-borderless shadow-custom table-custom\">\n";
   
   $output .= "\t<thead>\n";
   $output .= "\t<tr>\n";

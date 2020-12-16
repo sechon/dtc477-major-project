@@ -49,7 +49,7 @@ if (isset($_GET["songid"])){
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Manager</title>
+    <title>Music Manager - Edit</title>
 
     <!-- external and internal CSS -->
     <link rel="stylesheet" href="styles.css" media="all">

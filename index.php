@@ -9,23 +9,25 @@
 require 'database.php';
 require 'functions.php';
 
-
-// did one or more checked boxes get submitted? let's delete them
-if (isset($_POST["song"])) {
-	$songList = $_POST["song"];
-	foreach ($songList as $songID) {
-		$sql = "DELETE FROM $databaseTable
-						WHERE songid=$songID";
-		$result = $db->query($sql);
-		if (!$result) die("Delete Error: " . $sql . "<br>" . $db->error);
-	}
-}
-
 // select all columns (*) in the database
 $sql = "SELECT * FROM $databaseTable
 				ORDER BY songid"; 
 $result = $db->query($sql);
 if (!$result) die("Select Error: " . $sql . "<br>" . $db->error);
+
+// did one or more checked boxes get submitted? let's delete them
+if (isset($_POST['deleteSelected'])) {
+	$songList  = $_POST['song'];
+  if (is_array($songList) || is_object($songList)){
+    foreach ($songList as $songID) { 
+      $sql = "DELETE FROM $databaseTable
+              WHERE songid=$songID";
+      $result = $db->query($sql);
+      if (!$result) die("Delete Error: " . $sql . "<br>" . $db->error);
+      echo "Delete successful";
+    }
+  }
+}
 
 // get search value from the submitted POST array
 $search = $_POST["searchText"];
@@ -68,7 +70,6 @@ if ($search != "") {
     </style>
 
     <!-- external and internal JavaScript -->
-    <script src="scripts.js" defer></script>
     <!-- bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script>
@@ -93,23 +94,21 @@ if ($search != "") {
           <li class="nav-item">
             <a class="nav-link" href="add-song.php">Add Song</a>
           </li>
-
-          <form method='POST'>
-            <button class="nav-link" type="submit">Delete Checked</button>
-          </form>
+          <form method="POST">
+            <button class="nav-link" id="deleteSelected" name="deleteSelected" type="submit">Delete Checked</button>
         </ul>
-        <form class="form-inline my-2 my-lg-0" method='POST'>
+        <div class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" name="searchText" type="searchText" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </div>
       </div>
     </nav>
 
+
     <div class="container">
-      <form method='POST'>
-        <?= outputSongResults($result, true); // call the function that returns HTML for a table
+      <?= outputSongResults($result, true); // call the function that returns HTML for a table
         ?>
-      </form>
+        </form>
     </div>
 
   </body>

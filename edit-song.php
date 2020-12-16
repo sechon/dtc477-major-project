@@ -59,15 +59,15 @@ if ( ($songName != "") && ($songArtist != "") && ($songAlbum != "") && ($songRat
 	<table>
 		<tr>
 			<td>Song Name:</td>
-			<td><input id="addSongName" name="addSongName" type="text" required></td>
+			<td><input id="addSongName" name="addSongName" type="text"></td>
 		</tr>
 		<tr>
 			<td>Artist Name:</td>
-			<td><input id="addArtistName" name="addArtistName" type="text" required></td>
+			<td><input id="addArtistName" name="addArtistName" type="text"></td>
 		</tr>
 		<tr>
 			<td>Album Name:</td>
-			<td><input id="addAlbumName" name="addAlbumName" type="text" required></td>
+			<td><input id="addAlbumName" name="addAlbumName" type="text"></td>
 		</tr>
 		<tr>
 			<td>Rating:</td>

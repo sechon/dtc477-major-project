@@ -1,11 +1,1 @@
-[16-Dec-2020 02:29:59 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'thenational.reclaimhosting.com' (using password: NO) in /home/spencere/public_html/repositories/dtc477-major-project/database.php on line 23
-[16-Dec-2020 02:33:13 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'demomusicmanager'@'thenational.reclaimhosting.com' (using password: YES) in /home/spencere/public_html/repositories/dtc477-major-project/database.php on line 23
-[16-Dec-2020 02:33:18 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'demomusicmanager'@'thenational.reclaimhosting.com' (using password: YES) in /home/spencere/public_html/repositories/dtc477-major-project/database.php on line 23
-[16-Dec-2020 02:33:20 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'demomusicmanager'@'thenational.reclaimhosting.com' (using password: YES) in /home/spencere/public_html/repositories/dtc477-major-project/database.php on line 23
-[16-Dec-2020 02:33:38 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'demomusicmanager'@'thenational.reclaimhosting.com' (using password: YES) in /home/spencere/public_html/repositories/dtc477-major-project/database.php on line 23
-[16-Dec-2020 02:33:58 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'demomusicmanager'@'thenational.reclaimhosting.com' (using password: YES) in /home/spencere/public_html/repositories/dtc477-major-project/database.php on line 23
-[16-Dec-2020 02:34:01 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'demomusicmanager'@'thenational.reclaimhosting.com' (using password: YES) in /home/spencere/public_html/repositories/dtc477-major-project/database.php on line 23
-[16-Dec-2020 04:01:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function outputApptResults() in /home/spencere/public_html/repositories/dtc477-major-project/search.php:24
-Stack trace:
-#0 {main}
-  thrown in /home/spencere/public_html/repositories/dtc477-major-project/search.php on line 24
+[16-Dec-2020 07:55:47 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/spencere/public_html/repositories/dtc477-major-project/index.php on line 22

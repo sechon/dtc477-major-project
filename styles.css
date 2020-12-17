@@ -5,6 +5,7 @@
 
 /* -- load google font -- */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 
 body {
   /* -- https://cssgradient.io/ -- */
@@ -14,23 +15,37 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: 'Montserrat', sans-serif;
+  color: #6588af;
+}
+
+.navbar-brand {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2em;
+}
+
+h1 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 4em;
+  color: #6588af;
 }
 
 a {
   color: #a1c4fd;
 }
 
-a.navbar-brand:hover {
+navbar-brand:hover {
   color: #007bff;
 }
 
 #search-btn {
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
   border: none;
+  transition: all .2s ease-in-out;
 }
 
 #search-btn:hover {
   background-image: linear-gradient(120deg, #c2e9fb 25%, #a1c4fd 75%);
+  transform: scale(1.025);
 }
 
 .btn-custom {
@@ -38,11 +53,13 @@ a.navbar-brand:hover {
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
   border-color: $fff;
   border: none;
-  color: black;
+  color: #f9f9f9;
+  transition: all .2s ease-in-out;
 }
 
 .btn-custom:hover {
   background-image: linear-gradient(120deg, #c2e9fb 25%, #a1c4fd 75%);
+  transform: scale(1.025);
 }
 
 .btn-link {
@@ -67,12 +84,22 @@ thead {
 }
 
 tbody:hover {
-  background-color: #c2e9fb;
+  background-color: #f9f9f9;
   opactity: 60%;
 }
 
-tbody.a:hover {
+tbody svg {
+  transition: all .2s ease-in-out;
+}
+
+tbody:hover {
   color: black;
+  transform: scale(1.01);
+}
+
+svg:hover {
+  color: black;
+  transform: scale(1.35);
 }
 
 .table-custom {

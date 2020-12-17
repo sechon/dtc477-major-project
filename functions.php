@@ -10,7 +10,7 @@ function outputSongResults($allSongs, $includeCheckbox = false) {
   
   // Start output table for songs
 	$output = "";
-	$output .= "<table class=\"table table-light table-hover table-borderless shadow-custom table-custom\">\n";// using bootstrap classes
+	$output .= "<table class=\"table table-light table-borderless shadow-custom table-custom\">\n";// using bootstrap classes
   $output .= "\t<thead>\n";
   $output .= "\t<tr>\n";
   $output .= "\t\t<th>PLAY</th>\n";

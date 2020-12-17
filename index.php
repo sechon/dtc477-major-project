@@ -89,6 +89,8 @@ if ($search != "") {
           <!-- start form -->
           <form method="POST">
             <button class="btn btn-inverse btn-link" id="deleteSelected" name="deleteSelected" type="submit">Delete Checked</button>
+            <!-- playlist feature disabled/not implemented yet-->
+            <button type="button" class="btn btn-inverse btn-link" disabled>Playlist</button>
         </ul>
         <div class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" name="searchText" type="searchText" placeholder="Search" aria-label="Search">

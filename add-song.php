@@ -6,6 +6,9 @@
 require 'database.php';
 require 'functions.php';
 
+//buffer reset - https://stackoverflow.com/questions/6974691/php-page-redirect-problem-cannot-modify-header-information
+ob_start();
+
 // read submitted data from the $_POST array
 $songName = mysqli_real_escape_string($db, $_POST["addSongName"]);
 $songArtist = mysqli_real_escape_string($db, $_POST["addArtistName"]);
@@ -13,7 +16,7 @@ $songAlbum = mysqli_real_escape_string($db, $_POST["addAlbumName"]);
 $songRating = mysqli_real_escape_string($db, $_POST["addRating"]);
 $songVideo = mysqli_real_escape_string($db, $_POST["addVideo"]);
 
-
+// check if POST information was filled in
 if ( ($songName != "") && ($songArtist != "") && ($songAlbum != "") && ($songRating != "") && ($songVideo != "") ) {
 
 	// insert submitted information into the database
@@ -25,9 +28,9 @@ if ( ($songName != "") && ($songArtist != "") && ($songAlbum != "") && ($songRat
 	$result = $db->query($sql); // process the SQL logic above, and get a result back
 	
 	if (!$result) die("Insert Error: " . $sql . "<br>" . $db->error);
+  // redirect back home after song is added to database
+  header("Location:index.php");
 }
-
-// onward to the HTML!
 
 ?>
   <!DOCTYPE html>
@@ -49,7 +52,7 @@ if ( ($songName != "") && ($songArtist != "") && ($songAlbum != "") && ($songRat
   </head>
 
   <body>
-
+    <!-- start top navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
       <a class="navbar-brand" href="index.php">Music Manager</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,6 +71,7 @@ if ( ($songName != "") && ($songArtist != "") && ($songAlbum != "") && ($songRat
       </div>
     </nav>
 
+    <!-- start add song form -->
     <div class="d-flex justify-content-center">
       <div class="jumbotron jumbotron-custom shadow-custom w-50">
         <h1>

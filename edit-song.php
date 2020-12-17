@@ -1,12 +1,16 @@
 <?
 
-// This page offers a form that submits back to itself to insert new records into the database
+// This page offers a form that submits back to the database to insert new records into the database
 
 // require the database initialization and functions
 require 'database.php';
 require 'functions.php';
 
+//buffer reset - https://stackoverflow.com/questions/6974691/php-page-redirect-problem-cannot-modify-header-information
+ob_start();
+
 //https://www.studentstutorial.com/php/php-mysql-data-update.php
+//using songid to get database values to appear on form for editing
 $result = mysqli_query($db,"SELECT * FROM $databaseTable WHERE songid='" . $_GET['songid'] . "'");
 $row = mysqli_fetch_array($result);
 
@@ -18,7 +22,7 @@ $songAlbum = mysqli_real_escape_string($db, $_POST["addAlbumName"]);
 $songRating = mysqli_real_escape_string($db, $_POST["addRating"]);
 $songVideo = mysqli_real_escape_string($db, $_POST["addVideo"]);
 
-
+// get songid from music manager
 if (isset($_GET["songid"])){
   $songID = $_GET["songid"];
     
@@ -38,11 +42,10 @@ if (isset($_GET["songid"])){
     $result = $db->query($sql); // process the SQL logic above, and get a result back
 
     if (!$result) die("Insert Error: " . $sql . "<br>" . $db->error);
-
+    // redirect back home after song is updated on the database
+    header("Location:index.php");
   }
 }
-
-// onward to the HTML!
 
 ?>
   <!DOCTYPE html>
@@ -64,7 +67,7 @@ if (isset($_GET["songid"])){
   </head>
 
   <body>
-
+    <!-- start top navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
       <a class="navbar-brand" href="index.php">Music Manager</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,6 +86,7 @@ if (isset($_GET["songid"])){
       </div>
     </nav>
 
+    <!-- start edit song form -->
     <div class="d-flex justify-content-center">
       <div class="jumbotron jumbotron-custom shadow-custom w-50">
         <h1>
@@ -91,6 +95,7 @@ if (isset($_GET["songid"])){
         <form method="POST">
           <div class="form-group">
             <label for="addSongName">Song Name: </label>
+            <!-- using songid, get database value to edit -->
             <input class="form-control" name="addSongName" id="addSongName" value="<? echo $row['song_name']; ?>" required></input>
           </div>
 

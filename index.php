@@ -9,6 +9,9 @@
 require 'database.php';
 require 'functions.php';
 
+//buffer reset - https://stackoverflow.com/questions/6974691/php-page-redirect-problem-cannot-modify-header-information
+ob_start();
+
 // select all columns (*) in the database
 $sql = "SELECT * FROM $databaseTable
 				ORDER BY songid"; 
@@ -24,14 +27,14 @@ if (isset($_POST['deleteSelected'])) {
               WHERE songid=$songID";
       $result = $db->query($sql);
       if (!$result) die("Delete Error: " . $sql . "<br>" . $db->error);
-      echo "Delete successful";
+      echo '<script>alert("Delete Successful")</script>';
+      header("Refresh:0");
     }
   }
 }
 
 // get search value from the submitted POST array
 $search = $_POST["searchText"];
-
 if ($search != "") {
 
 	// select all columns (*) in rows where the $search appears in 
@@ -44,8 +47,6 @@ if ($search != "") {
 	$result = $db->query($sql);
 	if (!$result) die("Select Error: " . $sql . "<br>" . $db->error);
 }
-
-// onward to the HTML!
 ?>
 
   <!DOCTYPE html>
@@ -70,7 +71,7 @@ if ($search != "") {
   </head>
 
   <body>
-
+    <!-- start top navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
       <a class="navbar-brand" href="index.php">Music Manager</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,6 +86,7 @@ if ($search != "") {
           <li class="nav-item">
             <a class="btn btn-inverse btn-link" href="add-song.php">Add Song</a>
           </li>
+          <!-- start form -->
           <form method="POST">
             <button class="btn btn-inverse btn-link" id="deleteSelected" name="deleteSelected" type="submit">Delete Checked</button>
         </ul>
@@ -99,7 +101,7 @@ if ($search != "") {
       <div class="table-responsive">
         <?= outputSongResults($result, true); // call the function that returns HTML for a table
         ?>
-          </form>
+          </form> <!-- end form outside of nav to include output results -->
           </table>
       </div>
     </div>

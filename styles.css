@@ -1,10 +1,11 @@
 /*
 //Spencer Echon
 //DTC 477 Major Project
-
 */
 
+/* -- load google font -- */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 body {
   /* -- https://cssgradient.io/ -- */
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
@@ -62,12 +63,12 @@ a.navbar-brand:hover {
 }
 
 thead {
-  color: #a1c4fd;
+  color: #6588af;
 }
 
 tbody:hover {
-  background-color: #a1c4fd;
-  opactity: 80%;
+  background-color: #c2e9fb;
+  opactity: 60%;
 }
 
 tbody.a:hover {
@@ -79,7 +80,7 @@ tbody.a:hover {
   margin-top: 20px;
   text-align: center;
   padding: 10px;
-  color: #000;
+  color: #6588af;
 }
 
 .jumbotron-custom {
